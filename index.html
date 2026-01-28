@@ -586,39 +586,17 @@
             doc.text('Bill To:', 120, 75);
             doc.setFont(undefined, 'normal');
             doc.text(customerName, 120, 82);
-            if (customerPhone) {
-                doc.setFontSize(9);
-                doc.text(customerPhone, 120, 87);
-                doc.setFontSize(10);
-            }
+            if (customerPhone) doc.text(customerPhone, 120, 87);
             
-            // Balance Due for invoices only - with enhanced styling
+            // Balance Due for invoices only
             if (docType === 'invoice') {
-                // Add a subtle background box for Balance Due
-                doc.setFillColor(240, 248, 255); // Light blue background
-                doc.roundedRect(118, 90.5, 75, 11, 2, 2, 'F');
-                
-                // Add border
-                doc.setDrawColor(0, 119, 190);
-                doc.setLineWidth(0.3);
-                doc.roundedRect(118, 90.5, 75, 11, 2, 2, 'S');
-                
-                // Balance Due label
                 doc.setFont(undefined, 'bold');
                 doc.setTextColor(0, 119, 190);
-                doc.setFontSize(9);
-                doc.text('BALANCE DUE:', 120, 95);
-                
-                // Balance Due amount - larger and prominent
-                doc.setFontSize(14);
-                doc.setFont(undefined, 'bold');
-                doc.setTextColor(220, 53, 69); // Red color for emphasis
-                doc.text(balanceDue, 191, 99, { align: 'right' });
-                
-                // Reset styling
+                doc.text('Balance Due:', 120, 94);
+                doc.setFontSize(12);
+                doc.text(balanceDue, 120, 99);
                 doc.setFontSize(10);
                 doc.setTextColor(0, 0, 0);
-                doc.setFont(undefined, 'normal');
             }
 
             // Items table header - adjust position based on document type
